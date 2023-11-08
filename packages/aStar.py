@@ -10,6 +10,8 @@ class Node:
     def __lt__(self, other):
         return self.cost < other.cost
 
+
+
 def astar(grid, start, goal):
     open_set = []
     closed_set = set()
@@ -52,15 +54,16 @@ def astar(grid, start, goal):
 # ]
 
 grid = [
-    [1,1,3],
-    [1,1,1],
-    [1,1,1]
+    [0,0,0,30],
+    [0,30,0,30],
+    [0,30,30,30],
+    [0,0,0,0]
 ]
 
 
 
-start = (1, 0)
-goal = (0, 0)
+start = (1, 2)
+goal = (3, 3)
 
 path = astar(grid, start, goal)
 if path:
