@@ -1,17 +1,20 @@
-
 import heapq
 
 def astar(start, goal, graph):
     # Initialize the open and closed sets
-    open_set = []
+    open_set = {}
     closed_set = set()
 
     # Add the starting node to the open set
-    heapq.heappush(open_set, (0, start, [start]))
+    open_set[start] = (0, [start])
 
     while open_set:
-        # Get the node with the lowest f score
-        current_cost, current_node, path = heapq.heappop(open_set)
+        # Get the node with the lowest f score from the open set
+        current_node = min(open_set, key=lambda node: open_set[node][0])
+        current_cost, path = open_set[current_node]
+
+        # Remove the current node from the open set
+        del open_set[current_node]
 
         # If we've reached the goal, return the path
         if current_node == goal:
@@ -33,19 +36,14 @@ def astar(start, goal, graph):
             h_score = heuristic(neighbor, goal)
             tentative_f_score = tentative_g_score + h_score
 
-            # If the neighbor is not in the open set, add it
-            if not any(neighbor in item for item in open_set):
-                heapq.heappush(open_set, (tentative_f_score, neighbor, path + [neighbor]))
-            else:
-                # If the neighbor is already in the open set, update its f score if the new score is lower
-                for item in open_set:
-                    if neighbor in item:
-                        if tentative_f_score < item[0]:
-                            item[0] = tentative_f_score
-                            item[2] = path + [neighbor]
+            if neighbor not in open_set or tentative_f_score < open_set[neighbor][0]:
+                open_set[neighbor] = (tentative_f_score, path + [neighbor])
 
     # If we've exhausted all possible paths and haven't found the goal, return None
     return None
+
+# Rest of your code remains the same
+
 
 def heuristic(node, goal):
     # In this example, we'll use the Manhattan distance as our heuristic
@@ -54,7 +52,7 @@ def heuristic(node, goal):
 
 
 graph = {
-    (0, 0): {(0, 1): 1, (1, 0): 1},
+    (0, 0): {(4, 4): 301, (1, 0): 1},
     (0, 1): {(0, 0): 1, (0, 2): 1, (1, 1): 1},
     (0, 2): {(0, 1): 1, (0, 3): 1, (1, 2): 1},
     (0, 3): {(0, 2): 1, (0, 4): 1, (1, 3): 1},
