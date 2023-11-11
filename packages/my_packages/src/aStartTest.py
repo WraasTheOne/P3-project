@@ -85,7 +85,7 @@ graph = {
 
 # Example start and goal nodes
 start_node = (0, 0)
-goal_node = (4, 4)
+goal_node = (3, 1)
 
 # Example usage of the A* algorithm
 path = astar(start_node, goal_node, graph)

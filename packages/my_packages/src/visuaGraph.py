@@ -31,10 +31,10 @@ graph = {
 }
 
 start_node = (0, 0)
-goal_node = (4, 4)
+goal_node = (3, 1)
 
 # Updated path
-path = [(0, 0), (0, 1), (1, 1), (1, 2), (1, 3), (1, 4), (2, 4), (3, 4), (4, 4)]
+path =[(0, 0), (0, 1), (1, 1), (2, 1), (3, 1)]
 
 # Filter the path to include only nodes that are in the graph
 filtered_path = [node for node in path if node in graph]
