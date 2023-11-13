@@ -30,7 +30,7 @@ class WheelControlNode(DTROS):
     def run(self):
         # publish 10 messages every second (10 Hz)
         rate = rospy.Rate(0.1)
-        message = WheelsCmdStamped(vel_left=self._vel_left, vel_right=self._vel_right)
+        message = WheelsCmdStamped(vel_left=1, vel_right=1)
         while not rospy.is_shutdown():
             self._publisher.publish(message)
             rate.sleep()

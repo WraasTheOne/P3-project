@@ -1,7 +1,7 @@
 # parameters
-ARG REPO_NAME="<REPO_NAME_HERE>"
-ARG DESCRIPTION="<DESCRIPTION_HERE>"
-ARG MAINTAINER="<YOUR_FULL_NAME> (<YOUR_EMAIL_ADDRESS>)"
+ARG REPO_NAME="P3-Project"
+ARG DESCRIPTION="This repository contains the work done on the 3. semester on cyber- and computertechnology"
+ARG MAINTAINER="<WraasTheOne> (nmha22@student.aau.dk)"
 # pick an icon from: https://fontawesome.com/v4.7.0/icons/
 ARG ICON="cube"
 
